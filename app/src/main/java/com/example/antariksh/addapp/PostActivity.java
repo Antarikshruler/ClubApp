@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
+import java.util.Random;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +35,7 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
 
-        mDatabase= FirebaseDatabase.getInstance().getReference().child("Club");
+        mDatabase= FirebaseDatabase.getInstance().getReference();
 
         mPostClub = (EditText) findViewById(R.id.editText);
         mPostEvent = (EditText) findViewById(R.id.editText2);
@@ -50,24 +52,29 @@ public class PostActivity extends AppCompatActivity {
             }
         });
     }
-    private void startPosting()
-    {
-        final String Club_val=mPostClub.getText().toString().trim();
-        final String Event_val=mPostEvent.getText().toString().trim();
-        final String Venue_val=mPostVenue.getText().toString().trim();
-        final String Date_val=mPostDate.getText().toString().trim();
-        final String Time_val=mPostTime.getText().toString().trim();
-        final String Description_val=mPostDescription.getText().toString().trim();
+    private int random1;
 
-        if(!TextUtils.isEmpty(Club_val) && !TextUtils.isEmpty(Event_val) && !TextUtils.isEmpty(Venue_val) && !TextUtils.isEmpty(Date_val) && !TextUtils.isEmpty(Time_val) && !TextUtils.isEmpty(Description_val)) {
+    private void startPosting(){
+        Random random = new Random();
+        random1 =random.nextInt(80000)+11111;
+        Event eventObj = new Event();
+        eventObj.club = mPostClub.getText().toString().trim();
+        eventObj.event = mPostEvent.getText().toString().trim();
+        eventObj.venue = mPostVenue.getText().toString().trim();
+        eventObj.date = mPostDate.getText().toString().trim();
+        eventObj.event_time = mPostTime.getText().toString().trim();
+        eventObj.description = mPostDescription.getText().toString().trim();
 
-            DatabaseReference newPost = mDatabase.push();
-            newPost.child("Club").setValue(Club_val);
-            newPost.child("Event").setValue(Event_val);
-            newPost.child("Venue").setValue(Venue_val);
-            newPost.child("Date").setValue(Date_val);
-            newPost.child("Time").setValue(Time_val);
-            newPost.child("Description").setValue(Description_val);
+        String Key = eventObj.date+eventObj.event_time+ random1;
+        eventObj.key = Key;
+
+        if(!TextUtils.isEmpty(eventObj.club) && !TextUtils.isEmpty(eventObj.event) && !TextUtils.isEmpty(eventObj.venue) && !TextUtils.isEmpty(eventObj.date) && !TextUtils.isEmpty(eventObj.event_time) && !TextUtils.isEmpty(eventObj.description)) {
+
+            mDatabase.child("Club").child(Key).setValue(eventObj);
+        }
+        else
+        {
+            Toast.makeText(this, "Fill all details", Toast.LENGTH_SHORT).show();
         }
         Intent mainIntent=new Intent(PostActivity.this,MainActivity.class);
         startActivity(mainIntent);

@@ -53,12 +53,12 @@ public class DeleteActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                String post_Club=(String) dataSnapshot.child("Club").getValue();
-                String post_Event=(String) dataSnapshot.child("Event").getValue();
-                String post_Venue=(String) dataSnapshot.child("Venue").getValue();
-                String post_Date=(String) dataSnapshot.child("Date").getValue();
-                String post_Time=(String) dataSnapshot.child("Time").getValue();
-                String post_Description=(String) dataSnapshot.child("Description").getValue();
+                String post_Club=(String) dataSnapshot.child("club").getValue();
+                String post_Event=(String) dataSnapshot.child("event").getValue();
+                String post_Venue=(String) dataSnapshot.child("venue").getValue();
+                String post_Date=(String) dataSnapshot.child("date").getValue();
+                String post_Time=(String) dataSnapshot.child("event_time").getValue();
+                String post_Description=(String) dataSnapshot.child("description").getValue();
 
                 printClub.setText(post_Club);
                 printDescription.setText(post_Description);

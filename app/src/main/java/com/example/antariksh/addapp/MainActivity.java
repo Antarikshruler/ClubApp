@@ -38,15 +38,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerAdapter<List, ListViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<List, ListViewHolder>(
+        FirebaseRecyclerAdapter<Event, ListViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Event, ListViewHolder>(
 
-                List.class,
+                Event.class,
                 R.layout.list_row,
                 ListViewHolder.class,
                 mDatabase
         ) {
             @Override
-            protected void populateViewHolder(ListViewHolder viewHolder, List model, int position) {
+            protected void populateViewHolder(ListViewHolder viewHolder, Event model, int position) {
 
                 final String post_Key=getRef(position).getKey();
 
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 viewHolder.setEvent(model.getEvent());
                 viewHolder.setVenue(model.getVenue());
                 viewHolder.setDate(model.getDate());
-                viewHolder.setTime(model.getTime());
+                viewHolder.setTime(model.getEvent_time());
                 viewHolder.setDescription(model.getDescription());
 
                 viewHolder.mView.setOnClickListener(new View.OnClickListener() {

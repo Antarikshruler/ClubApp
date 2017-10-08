@@ -5,9 +5,9 @@
     android:layout_height="match_parent"
     tools:context="com.example.antariksh.addapp.PostActivity">
 
-    <EditText
+    <Spinner
         android:id="@+id/editText"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Club"
@@ -19,7 +19,7 @@
         android:paddingTop="15dp"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"/>
 
     <EditText
         android:id="@+id/editText2"
