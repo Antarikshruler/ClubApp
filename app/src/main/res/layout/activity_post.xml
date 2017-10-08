@@ -6,11 +6,11 @@
     tools:context="com.example.antariksh.addapp.PostActivity">
 
     <Spinner
-        android:id="@+id/editText"
+        android:id="@+id/club_spinner"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Club"
+        android:prompt="@string/spinner_title"
         android:layout_centerHorizontal="true"
         android:inputType="textPersonName"
         android:paddingBottom="15dp"
@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Event"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/club_spinner"
         android:inputType="textPersonName"
         android:layout_centerHorizontal="true"
         android:paddingBottom="15dp"

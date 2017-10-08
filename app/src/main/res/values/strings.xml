@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">addapp</string>
+    <string name="spinner_title">Select Club</string>
 </resources>
